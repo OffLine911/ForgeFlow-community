@@ -1,62 +1,54 @@
 # 🔥 ForgeFlow Community Templates
 
-A collection of community-contributed workflow templates for [ForgeFlow](https://github.com/OffLine911/ForgeFlow).
+Community-contributed workflow templates for [ForgeFlow](https://github.com/OffLine911/ForgeFlow) automation engine.
+
+## 🚀 About
+
+This repository contains a collection of workflow templates that can be imported into ForgeFlow. These templates help you automate tasks, boost productivity, and streamline your workflows.
+
+## 📦 How to Use Templates
+
+1. Open ForgeFlow application
+2. Navigate to the **Templates** modal
+3. Browse available community templates
+4. Click **Import** on any template you want to use
+5. Customize the template to fit your needs
+
+Templates are automatically fetched from this repository and displayed in ForgeFlow.
+
+## 🎯 Template Categories
+
+- **Automation** - File operations, scheduled tasks, scripts
+- **Productivity** - Reminders, timers, organization tools
+- **DevOps** - Monitoring, deployment, CI/CD
+- **AI** - LLM integrations, chatbots, summarization
+- **Data** - Parsing, transformations, conversions
+- **Integration** - Webhooks, APIs, third-party services
 
 ## 📚 Documentation
 
-| Guide | Description |
-|-------|-------------|
-| 📝 [Custom Templates](wiki/custom-templates.md) | Learn how to create and share workflow templates |
-| 🔧 [Custom Nodes](wiki/custom-nodes.md) | Build your own nodes with Shell/HTTP/JavaScript |
+For detailed information about ForgeFlow's node types, connections, and variables, visit the [ForgeFlow Wiki](wiki/README.md):
 
-## 📦 Using Templates
-
-1. Open ForgeFlow
-2. Click **Templates** in the header
-3. Switch to the **Community** tab
-4. Browse and import any template with one click!
-
-## 🎨 Available Templates
-
-| Template | Category | Description |
-|----------|----------|-------------|
-| 🔔 **Daily Reminder** | Productivity | Schedule daily notifications |
-| 📁 **File Organizer** | Automation | Auto-organize downloads by file type |
-| 🌐 **API Health Check** | DevOps | Monitor multiple API endpoints |
-| 🤖 **AI Chat Bot** | AI | Interactive chatbot with memory |
-| 📊 **CSV to JSON** | Data | Convert CSV files to JSON format |
-| 🔄 **Backup Script** | Automation | Automated file backup workflow |
-| 📧 **Webhook Processor** | Integration | Process incoming webhooks |
-| ⏰ **Pomodoro Timer** | Productivity | Work/break notification cycle |
+- [Getting Started](wiki/templates/getting-started.md)
+- [Node Types](wiki/templates/node-types.md)
+- [Connections](wiki/templates/connections.md)
+- [Variables](wiki/templates/variables.md)
+- [Template Structure](wiki/templates/structure.md)
 
 ## 🤝 Contributing
 
-Want to share your workflow? 
+Want to share your workflow with the community? Check out our [Contributing Guide](CONTRIBUTING.md) to learn how to submit your templates.
+
+### Quick Start
 
 1. Fork this repository
-2. Add your template to `templates.json`
-3. Submit a Pull Request
+2. Create your template file in `templates/your-template-name.json`
+3. Update `index.json` with your template entry
+4. Submit a Pull Request
 
-### Template Format
+## 📄 License
 
-```json
-{
-  "id": "unique-id",
-  "name": "Template Name",
-  "description": "What it does",
-  "icon": "🚀",
-  "category": "Category",
-  "author": "YourUsername",
-  "nodes": [...],
-  "connections": [...]
-}
-```
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
-
-## 📜 License
-
-MIT License - Feel free to use and modify these templates!
+MIT License - feel free to use and modify these templates for your needs.
 
 ---
 

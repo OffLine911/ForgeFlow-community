@@ -1,0 +1,114 @@
+{
+  "templates": [
+    {
+      "id": "morning-greeting",
+      "file": "morning-greeting.json",
+      "name": "Morning Greeting",
+      "description": "Show a greeting notification every morning at 8 AM",
+      "icon": "🌅",
+      "category": "Productivity",
+      "author": "OffLine911",
+      "downloads": 0
+    },
+    {
+      "id": "file-backup",
+      "file": "file-backup.json",
+      "name": "File Backup",
+      "description": "Automatically backup important files to a safe location",
+      "icon": "💾",
+      "category": "Automation",
+      "author": "OffLine911",
+      "downloads": 0
+    },
+    {
+      "id": "daily-reminder",
+      "file": "daily-reminder.json",
+      "name": "Daily Reminder",
+      "description": "Get a notification reminder at a specific time each day",
+      "icon": "⏰",
+      "category": "Productivity",
+      "author": "OffLine911",
+      "downloads": 0
+    },
+    {
+      "id": "pomodoro-productivity",
+      "file": "pomodoro-productivity.json",
+      "name": "Pomodoro Productivity Timer",
+      "description": "25-minute work sessions with 5-minute breaks and motivational quotes",
+      "icon": "⏱️",
+      "category": "Productivity",
+      "author": "OffLine911",
+      "downloads": 0
+    },
+    {
+      "id": "github-release-monitor",
+      "file": "github-release-monitor.json",
+      "name": "GitHub Release Monitor",
+      "description": "Monitor GitHub repositories for new releases and get instant notifications",
+      "icon": "🐙",
+      "category": "DevOps",
+      "author": "OffLine911",
+      "downloads": 0
+    },
+    {
+      "id": "ai-content-summarizer",
+      "file": "ai-content-summarizer.json",
+      "name": "AI Content Summarizer",
+      "description": "Fetch web content and generate AI-powered summaries with key insights",
+      "icon": "🤖",
+      "category": "AI",
+      "author": "OffLine911",
+      "downloads": 0
+    },
+    {
+      "id": "api-health-monitor",
+      "file": "api-health-monitor.json",
+      "name": "API Health Monitor",
+      "description": "Monitor multiple API endpoints and get alerts when they're down",
+      "icon": "🏥",
+      "category": "DevOps",
+      "author": "OffLine911",
+      "downloads": 0
+    },
+    {
+      "id": "csv-to-json-converter",
+      "file": "csv-to-json-converter.json",
+      "name": "CSV to JSON Converter",
+      "description": "Convert CSV files to JSON format with data validation and formatting",
+      "icon": "📊",
+      "category": "Data",
+      "author": "OffLine911",
+      "downloads": 0
+    },
+    {
+      "id": "webhook-discord-notifier",
+      "file": "webhook-discord-notifier.json",
+      "name": "Webhook to Discord Notifier",
+      "description": "Receive webhooks and send formatted notifications to Discord channels",
+      "icon": "🔔",
+      "category": "Integration",
+      "author": "OffLine911",
+      "downloads": 0
+    },
+    {
+      "id": "smart-file-organizer",
+      "file": "smart-file-organizer.json",
+      "name": "Smart File Organizer",
+      "description": "Automatically organize downloads by file type into categorized folders",
+      "icon": "📁",
+      "category": "Automation",
+      "author": "OffLine911",
+      "downloads": 0
+    },
+    {
+      "id": "system-resource-monitor",
+      "file": "system-resource-monitor.json",
+      "name": "System Resource Monitor",
+      "description": "Monitor CPU, memory, and disk usage with alerts for high resource consumption",
+      "icon": "💻",
+      "category": "DevOps",
+      "author": "OffLine911",
+      "downloads": 0
+    }
+  ]
+}

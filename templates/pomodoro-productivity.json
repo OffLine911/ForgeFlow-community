@@ -1,0 +1,113 @@
+{
+  "id": "pomodoro-productivity",
+  "name": "Pomodoro Productivity Timer",
+  "description": "25-minute work sessions with 5-minute breaks and motivational quotes",
+  "icon": "⏱️",
+  "category": "Productivity",
+  "nodes": [
+    {
+      "type": "trigger_manual",
+      "position": { "x": 100, "y": 250 },
+      "data": {}
+    },
+    {
+      "type": "action_notification",
+      "position": { "x": 350, "y": 250 },
+      "data": {
+        "title": "🍅 Pomodoro Started",
+        "message": "Focus time! 25 minutes of deep work begins now."
+      }
+    },
+    {
+      "type": "action_delay",
+      "position": { "x": 600, "y": 250 },
+      "data": {
+        "duration": 1500000
+      }
+    },
+    {
+      "type": "action_http",
+      "position": { "x": 850, "y": 250 },
+      "data": {
+        "method": "GET",
+        "url": "https://api.quotable.io/random?tags=inspirational"
+      }
+    },
+    {
+      "type": "action_notification",
+      "position": { "x": 1100, "y": 250 },
+      "data": {
+        "title": "☕ Break Time!",
+        "message": "Great work! Take a 5-minute break.\n\n💭 {{output.content}}\n- {{output.author}}"
+      }
+    },
+    {
+      "type": "action_delay",
+      "position": { "x": 1350, "y": 250 },
+      "data": {
+        "duration": 300000
+      }
+    },
+    {
+      "type": "action_notification",
+      "position": { "x": 1600, "y": 250 },
+      "data": {
+        "title": "🔥 Back to Work!",
+        "message": "Break's over. Ready for another focused session?"
+      }
+    },
+    {
+      "type": "action_file",
+      "position": { "x": 1100, "y": 400 },
+      "data": {
+        "operation": "append",
+        "path": "C:\\Productivity\\pomodoro-log.txt",
+        "content": "[{{timestamp}}] Completed Pomodoro Session\n"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "sourceIndex": 0,
+      "sourcePort": "out",
+      "targetIndex": 1,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 1,
+      "sourcePort": "out",
+      "targetIndex": 2,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 2,
+      "sourcePort": "out",
+      "targetIndex": 3,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 3,
+      "sourcePort": "out",
+      "targetIndex": 4,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 4,
+      "sourcePort": "out",
+      "targetIndex": 5,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 4,
+      "sourcePort": "out",
+      "targetIndex": 7,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 5,
+      "sourcePort": "out",
+      "targetIndex": 6,
+      "targetPort": "in"
+    }
+  ]
+}

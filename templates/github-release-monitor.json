@@ -1,0 +1,110 @@
+{
+  "id": "github-release-monitor",
+  "name": "GitHub Release Monitor",
+  "description": "Monitor GitHub repositories for new releases and get instant notifications",
+  "icon": "🐙",
+  "category": "DevOps",
+  "nodes": [
+    {
+      "type": "trigger_schedule",
+      "position": { "x": 100, "y": 200 },
+      "data": {
+        "cron": "0 */6 * * *"
+      }
+    },
+    {
+      "type": "action_http",
+      "position": { "x": 350, "y": 200 },
+      "data": {
+        "method": "GET",
+        "url": "https://api.github.com/repos/{{repo_owner}}/{{repo_name}}/releases/latest",
+        "headers": {
+          "Accept": "application/vnd.github.v3+json",
+          "User-Agent": "ForgeFlow-Monitor"
+        }
+      }
+    },
+    {
+      "type": "action_file",
+      "position": { "x": 600, "y": 200 },
+      "data": {
+        "operation": "read",
+        "path": "C:\\Cache\\last-release.txt"
+      }
+    },
+    {
+      "type": "action_condition",
+      "position": { "x": 850, "y": 200 },
+      "data": {
+        "condition": "{{output.tag_name}} !== {{cache}}"
+      }
+    },
+    {
+      "type": "action_notification",
+      "position": { "x": 1100, "y": 150 },
+      "data": {
+        "title": "🎉 New GitHub Release!",
+        "message": "{{output.name}} ({{output.tag_name}})\n\n{{output.body}}"
+      }
+    },
+    {
+      "type": "action_file",
+      "position": { "x": 1100, "y": 250 },
+      "data": {
+        "operation": "write",
+        "path": "C:\\Cache\\last-release.txt",
+        "content": "{{output.tag_name}}"
+      }
+    },
+    {
+      "type": "action_http",
+      "position": { "x": 1350, "y": 200 },
+      "data": {
+        "method": "POST",
+        "url": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": "{\"text\": \"New release: {{output.name}} - {{output.html_url}}\"}"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "sourceIndex": 0,
+      "sourcePort": "out",
+      "targetIndex": 1,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 1,
+      "sourcePort": "out",
+      "targetIndex": 2,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 2,
+      "sourcePort": "out",
+      "targetIndex": 3,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 3,
+      "sourcePort": "true",
+      "targetIndex": 4,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 3,
+      "sourcePort": "true",
+      "targetIndex": 5,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 4,
+      "sourcePort": "out",
+      "targetIndex": 6,
+      "targetPort": "in"
+    }
+  ]
+}

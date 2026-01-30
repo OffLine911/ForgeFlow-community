@@ -1,29 +1,41 @@
-# Contributing to ForgeFlow Community Templates
+# Contributing to ForgeFlow-Community
 
-Thanks for contributing! Here's how to add your workflow templates.
+Thank you for your interest in contributing to ForgeFlow-Community! This guide will help you submit your workflow templates.
 
-## Quick Start
+## How to Add a New Template
 
-1. **Fork** this repository
-2. **Edit** `templates.json` and add your template
-3. **Test** your template in ForgeFlow
-4. **Submit** a Pull Request
+### 1. Create Your Template File
 
-## Template Structure
+Create a new JSON file in the `templates/` directory with a kebab-case filename matching your template ID:
+
+```
+templates/your-template-name.json
+```
+
+### 2. Template Structure
+
+Your template file should follow this structure:
 
 ```json
 {
-  "id": "my-awesome-workflow",
-  "name": "My Awesome Workflow",
-  "description": "Brief description of what this workflow does",
+  "id": "your-template-name",
+  "name": "Your Template Name",
+  "description": "Brief description of what your template does",
   "icon": "🚀",
   "category": "Automation",
-  "author": "YourGitHubUsername",
   "nodes": [
     {
       "type": "trigger_manual",
-      "position": { "x": 100, "y": 100 },
+      "position": { "x": 100, "y": 150 },
       "data": {}
+    },
+    {
+      "type": "action_notification",
+      "position": { "x": 350, "y": 150 },
+      "data": {
+        "title": "Hello!",
+        "message": "Template executed successfully"
+      }
     }
   ],
   "connections": [
@@ -37,48 +49,86 @@ Thanks for contributing! Here's how to add your workflow templates.
 }
 ```
 
-## Fields
+**Important:** Do NOT include an `author` field in the template file. This is managed in `index.json`.
 
-| Field | Required | Description |
-|-------|----------|-------------|
-| `id` | ✅ | Unique kebab-case identifier |
-| `name` | ✅ | Human-readable name |
-| `description` | ✅ | What the workflow does (1-2 sentences) |
-| `icon` | ✅ | Single emoji |
-| `category` | ✅ | One of: Automation, Productivity, DevOps, AI, Data, Integration |
-| `author` | ✅ | Your GitHub username |
-| `nodes` | ✅ | Array of node objects |
-| `connections` | ✅ | Array of connection objects |
+### 3. Update index.json
+
+Add your template entry to the `templates` array in `index.json`:
+
+```json
+{
+  "id": "your-template-name",
+  "file": "your-template-name.json",
+  "name": "Your Template Name",
+  "description": "Brief description of what your template does",
+  "icon": "🚀",
+  "category": "Automation",
+  "author": "YourGitHubUsername",
+  "downloads": 0
+}
+```
+
+## Template Validation Checklist
+
+Before submitting your PR, ensure:
+
+- [ ] Template ID is unique and uses kebab-case
+- [ ] Filename matches the template ID
+- [ ] JSON is valid (no trailing commas, proper syntax)
+- [ ] Template ID matches between `index.json` and template file
+- [ ] Category is one of: Automation, Productivity, DevOps, AI, Data, Integration
+- [ ] Description is clear and concise (under 100 characters)
+- [ ] Icon is a single emoji
+- [ ] No `author` field in the template file (only in `index.json`)
+- [ ] All node types are valid ForgeFlow nodes
+- [ ] Connections reference correct node indices
+- [ ] Template has been tested in ForgeFlow
+
+## Available Node Types
+
+For a complete list of available node types and their configurations, see the [ForgeFlow Wiki](wiki/README.md):
+
+- [Node Types](wiki/templates/node-types.md)
+- [Connections](wiki/templates/connections.md)
+- [Variables](wiki/templates/variables.md)
 
 ## Categories
 
-- **Automation** - File operations, scheduled tasks
-- **Productivity** - Reminders, timers, organization
-- **DevOps** - Monitoring, deployment, health checks
+Use one of these standard categories:
+
+- **Automation** - File operations, scheduled tasks, scripts
+- **Productivity** - Reminders, timers, organization tools
+- **DevOps** - Monitoring, deployment, CI/CD
 - **AI** - LLM integrations, chatbots, summarization
-- **Data** - Transformations, parsing, exports
+- **Data** - Parsing, transformations, conversions
 - **Integration** - Webhooks, APIs, third-party services
 
-## Guidelines
+## Pull Request Requirements
 
-✅ **Do:**
-- Test your template before submitting
-- Use descriptive names and descriptions
-- Include all required fields
-- Use appropriate category
+1. Fork the repository
+2. Create a new branch: `git checkout -b add-template-name`
+3. Add your template file to `templates/`
+4. Update `index.json` with your template entry
+5. Commit your changes: `git commit -m "Add [Template Name] template"`
+6. Push to your fork: `git push origin add-template-name`
+7. Open a Pull Request with:
+   - Clear description of what your template does
+   - Screenshots or GIFs showing the template in action (optional but appreciated)
+   - Any special requirements or dependencies
 
-❌ **Don't:**
-- Include sensitive data (API keys, passwords)
-- Submit broken/untested templates
-- Use offensive content
+## Code of Conduct
 
-## Testing Your Template
-
-1. Copy your template JSON
-2. In ForgeFlow, go to Import/Export
-3. Paste and import
-4. Run the workflow to verify it works
+- Be respectful and constructive
+- Provide helpful and accurate templates
+- Test your templates before submitting
+- Follow the established structure and conventions
+- Help others by reviewing PRs and providing feedback
 
 ## Questions?
 
-Open an issue if you need help!
+If you have questions about contributing, feel free to:
+- Open an issue for discussion
+- Check existing templates for examples
+- Review the [ForgeFlow Wiki](wiki/README.md) for technical details
+
+Thank you for contributing to the ForgeFlow community! 🎉

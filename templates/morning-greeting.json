@@ -1,0 +1,46 @@
+{
+  "id": "morning-greeting",
+  "name": "Morning Greeting",
+  "description": "Show a greeting notification every morning at 8 AM",
+  "icon": "🌅",
+  "category": "Productivity",
+  "nodes": [
+    {
+      "type": "trigger_schedule",
+      "position": { "x": 100, "y": 150 },
+      "data": {
+        "cron": "0 8 * * *"
+      }
+    },
+    {
+      "type": "action_date",
+      "position": { "x": 350, "y": 150 },
+      "data": {
+        "operation": "now",
+        "format": "dddd"
+      }
+    },
+    {
+      "type": "action_notification",
+      "position": { "x": 600, "y": 150 },
+      "data": {
+        "title": "Good Morning! ☀️",
+        "message": "Happy {{output}}! Have a great day!"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "sourceIndex": 0,
+      "sourcePort": "out",
+      "targetIndex": 1,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 1,
+      "sourcePort": "out",
+      "targetIndex": 2,
+      "targetPort": "in"
+    }
+  ]
+}

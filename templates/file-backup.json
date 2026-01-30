@@ -1,0 +1,61 @@
+{
+  "id": "file-backup",
+  "name": "File Backup",
+  "description": "Automatically backup important files to a safe location",
+  "icon": "💾",
+  "category": "Automation",
+  "nodes": [
+    {
+      "type": "trigger_schedule",
+      "position": { "x": 100, "y": 150 },
+      "data": {
+        "cron": "0 0 * * *"
+      }
+    },
+    {
+      "type": "action_file",
+      "position": { "x": 350, "y": 150 },
+      "data": {
+        "operation": "read",
+        "path": "C:\\Documents\\important.txt"
+      }
+    },
+    {
+      "type": "action_file",
+      "position": { "x": 600, "y": 150 },
+      "data": {
+        "operation": "write",
+        "path": "C:\\Backup\\important-backup.txt",
+        "content": "{{output}}"
+      }
+    },
+    {
+      "type": "action_notification",
+      "position": { "x": 850, "y": 150 },
+      "data": {
+        "title": "Backup Complete",
+        "message": "Files backed up successfully"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "sourceIndex": 0,
+      "sourcePort": "out",
+      "targetIndex": 1,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 1,
+      "sourcePort": "out",
+      "targetIndex": 2,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 2,
+      "sourcePort": "out",
+      "targetIndex": 3,
+      "targetPort": "in"
+    }
+  ]
+}

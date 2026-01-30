@@ -1,0 +1,109 @@
+{
+  "id": "csv-to-json-converter",
+  "name": "CSV to JSON Converter",
+  "description": "Convert CSV files to JSON format with data validation and formatting",
+  "icon": "📊",
+  "category": "Data",
+  "nodes": [
+    {
+      "type": "trigger_file_watcher",
+      "position": { "x": 100, "y": 200 },
+      "data": {
+        "path": "C:\\Data\\Input",
+        "events": ["created"],
+        "filter": "*.csv"
+      }
+    },
+    {
+      "type": "action_file",
+      "position": { "x": 350, "y": 200 },
+      "data": {
+        "operation": "read",
+        "path": "{{filePath}}"
+      }
+    },
+    {
+      "type": "action_data",
+      "position": { "x": 600, "y": 200 },
+      "data": {
+        "operation": "parse_csv",
+        "input": "{{output}}",
+        "delimiter": ",",
+        "headers": true
+      }
+    },
+    {
+      "type": "action_data",
+      "position": { "x": 850, "y": 200 },
+      "data": {
+        "operation": "transform",
+        "input": "{{output}}",
+        "script": "data.map(row => ({ ...row, processed: true, timestamp: new Date().toISOString() }))"
+      }
+    },
+    {
+      "type": "action_data",
+      "position": { "x": 1100, "y": 200 },
+      "data": {
+        "operation": "to_json",
+        "input": "{{output}}",
+        "pretty": true
+      }
+    },
+    {
+      "type": "action_file",
+      "position": { "x": 1350, "y": 200 },
+      "data": {
+        "operation": "write",
+        "path": "C:\\Data\\Output\\{{fileNameWithoutExt}}.json",
+        "content": "{{output}}"
+      }
+    },
+    {
+      "type": "action_notification",
+      "position": { "x": 1600, "y": 200 },
+      "data": {
+        "title": "✅ Conversion Complete",
+        "message": "{{fileName}} converted to JSON successfully"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "sourceIndex": 0,
+      "sourcePort": "out",
+      "targetIndex": 1,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 1,
+      "sourcePort": "out",
+      "targetIndex": 2,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 2,
+      "sourcePort": "out",
+      "targetIndex": 3,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 3,
+      "sourcePort": "out",
+      "targetIndex": 4,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 4,
+      "sourcePort": "out",
+      "targetIndex": 5,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 5,
+      "sourcePort": "out",
+      "targetIndex": 6,
+      "targetPort": "in"
+    }
+  ]
+}

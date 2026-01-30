@@ -1,0 +1,32 @@
+{
+  "id": "daily-reminder",
+  "name": "Daily Reminder",
+  "description": "Get a notification reminder at a specific time each day",
+  "icon": "⏰",
+  "category": "Productivity",
+  "nodes": [
+    {
+      "type": "trigger_schedule",
+      "position": { "x": 100, "y": 150 },
+      "data": {
+        "cron": "0 14 * * *"
+      }
+    },
+    {
+      "type": "action_notification",
+      "position": { "x": 350, "y": 150 },
+      "data": {
+        "title": "Daily Reminder ⏰",
+        "message": "Don't forget to take a break and stretch!"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "sourceIndex": 0,
+      "sourcePort": "out",
+      "targetIndex": 1,
+      "targetPort": "in"
+    }
+  ]
+}
