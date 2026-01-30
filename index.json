@@ -5,7 +5,7 @@
       "file": "morning-greeting.json",
       "name": "Morning Greeting",
       "description": "Show a greeting notification every morning at 8 AM",
-      "icon": "🌅",
+      "icon": "sunrise",
       "category": "Productivity",
       "author": "OffLine911",
       "downloads": 0
@@ -15,7 +15,7 @@
       "file": "file-backup.json",
       "name": "File Backup",
       "description": "Automatically backup important files to a safe location",
-      "icon": "💾",
+      "icon": "save",
       "category": "Automation",
       "author": "OffLine911",
       "downloads": 0
@@ -25,7 +25,7 @@
       "file": "daily-reminder.json",
       "name": "Daily Reminder",
       "description": "Get a notification reminder at a specific time each day",
-      "icon": "⏰",
+      "icon": "clock",
       "category": "Productivity",
       "author": "OffLine911",
       "downloads": 0
@@ -35,7 +35,7 @@
       "file": "pomodoro-productivity.json",
       "name": "Pomodoro Productivity Timer",
       "description": "25-minute work sessions with 5-minute breaks and motivational quotes",
-      "icon": "⏱️",
+      "icon": "timer",
       "category": "Productivity",
       "author": "OffLine911",
       "downloads": 0
@@ -45,7 +45,7 @@
       "file": "github-release-monitor.json",
       "name": "GitHub Release Monitor",
       "description": "Monitor GitHub repositories for new releases and get instant notifications",
-      "icon": "🐙",
+      "icon": "github",
       "category": "DevOps",
       "author": "OffLine911",
       "downloads": 0
@@ -55,7 +55,7 @@
       "file": "ai-content-summarizer.json",
       "name": "AI Content Summarizer",
       "description": "Fetch web content and generate AI-powered summaries with key insights",
-      "icon": "🤖",
+      "icon": "robot",
       "category": "AI",
       "author": "OffLine911",
       "downloads": 0
@@ -65,7 +65,7 @@
       "file": "api-health-monitor.json",
       "name": "API Health Monitor",
       "description": "Monitor multiple API endpoints and get alerts when they're down",
-      "icon": "🏥",
+      "icon": "activity",
       "category": "DevOps",
       "author": "OffLine911",
       "downloads": 0
@@ -75,7 +75,7 @@
       "file": "csv-to-json-converter.json",
       "name": "CSV to JSON Converter",
       "description": "Convert CSV files to JSON format with data validation and formatting",
-      "icon": "📊",
+      "icon": "file-text",
       "category": "Data",
       "author": "OffLine911",
       "downloads": 0
@@ -85,7 +85,7 @@
       "file": "webhook-discord-notifier.json",
       "name": "Webhook to Discord Notifier",
       "description": "Receive webhooks and send formatted notifications to Discord channels",
-      "icon": "🔔",
+      "icon": "bell",
       "category": "Integration",
       "author": "OffLine911",
       "downloads": 0
@@ -95,7 +95,7 @@
       "file": "smart-file-organizer.json",
       "name": "Smart File Organizer",
       "description": "Automatically organize downloads by file type into categorized folders",
-      "icon": "📁",
+      "icon": "folder",
       "category": "Automation",
       "author": "OffLine911",
       "downloads": 0
@@ -105,7 +105,7 @@
       "file": "system-resource-monitor.json",
       "name": "System Resource Monitor",
       "description": "Monitor CPU, memory, and disk usage with alerts for high resource consumption",
-      "icon": "💻",
+      "icon": "cpu",
       "category": "DevOps",
       "author": "OffLine911",
       "downloads": 0
