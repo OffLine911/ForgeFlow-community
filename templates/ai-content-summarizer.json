@@ -2,72 +2,35 @@
   "id": "ai-content-summarizer",
   "name": "AI Content Summarizer",
   "description": "Fetch web content and generate AI-powered summaries with key insights",
-  "icon": "🤖",
+  "icon": "robot",
   "category": "AI",
   "nodes": [
     {
-      "type": "trigger_webhook",
+      "type": "trigger_manual",
       "position": { "x": 100, "y": 200 },
-      "data": {
-        "path": "/summarize",
-        "method": "POST"
-      }
+      "data": {}
     },
     {
       "type": "action_http",
       "position": { "x": 350, "y": 200 },
       "data": {
         "method": "GET",
-        "url": "{{body.url}}",
-        "headers": {
-          "User-Agent": "Mozilla/5.0"
-        }
-      }
-    },
-    {
-      "type": "action_text",
-      "position": { "x": 600, "y": 200 },
-      "data": {
-        "operation": "extract",
-        "pattern": "<body[^>]*>([\\s\\S]*?)</body>",
-        "input": "{{output}}"
-      }
-    },
-    {
-      "type": "action_text",
-      "position": { "x": 850, "y": 200 },
-      "data": {
-        "operation": "replace",
-        "pattern": "<[^>]+>",
-        "replacement": "",
-        "input": "{{output}}"
+        "url": "https://example.com/article"
       }
     },
     {
       "type": "action_ai",
-      "position": { "x": 1100, "y": 200 },
+      "position": { "x": 600, "y": 200 },
       "data": {
-        "provider": "openai",
-        "model": "gpt-4",
-        "prompt": "Summarize the following content in 3-5 bullet points with key insights:\n\n{{output}}",
-        "maxTokens": 500
+        "prompt": "Summarize this content in 3 bullet points:\n\n{{output}}"
       }
     },
     {
       "type": "action_notification",
-      "position": { "x": 1350, "y": 150 },
+      "position": { "x": 850, "y": 200 },
       "data": {
-        "title": "Summary Ready 📝",
-        "message": "AI summary generated successfully"
-      }
-    },
-    {
-      "type": "action_file",
-      "position": { "x": 1350, "y": 250 },
-      "data": {
-        "operation": "write",
-        "path": "C:\\Summaries\\summary-{{timestamp}}.txt",
-        "content": "URL: {{body.url}}\n\nSummary:\n{{output}}"
+        "title": "Summary Ready",
+        "message": "{{output}}"
       }
     }
   ],
@@ -88,24 +51,6 @@
       "sourceIndex": 2,
       "sourcePort": "out",
       "targetIndex": 3,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 3,
-      "sourcePort": "out",
-      "targetIndex": 4,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 4,
-      "sourcePort": "out",
-      "targetIndex": 5,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 4,
-      "sourcePort": "out",
-      "targetIndex": 6,
       "targetPort": "in"
     }
   ]

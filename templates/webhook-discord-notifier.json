@@ -2,59 +2,31 @@
   "id": "webhook-discord-notifier",
   "name": "Webhook to Discord Notifier",
   "description": "Receive webhooks and send formatted notifications to Discord channels",
-  "icon": "🔔",
+  "icon": "bell",
   "category": "Integration",
   "nodes": [
     {
       "type": "trigger_webhook",
-      "position": { "x": 100, "y": 250 },
+      "position": { "x": 100, "y": 200 },
       "data": {
         "path": "/notify",
         "method": "POST"
       }
     },
     {
-      "type": "action_condition",
-      "position": { "x": 350, "y": 250 },
-      "data": {
-        "condition": "{{body.priority}} === 'high'"
-      }
-    },
-    {
-      "type": "action_data",
-      "position": { "x": 600, "y": 150 },
-      "data": {
-        "operation": "template",
-        "template": "{\n  \"embeds\": [{\n    \"title\": \"🚨 High Priority Alert\",\n    \"description\": \"{{body.message}}\",\n    \"color\": 15158332,\n    \"fields\": [\n      {\"name\": \"Source\", \"value\": \"{{body.source}}\", \"inline\": true},\n      {\"name\": \"Time\", \"value\": \"{{timestamp}}\", \"inline\": true}\n    ]\n  }]\n}"
-      }
-    },
-    {
-      "type": "action_data",
-      "position": { "x": 600, "y": 350 },
-      "data": {
-        "operation": "template",
-        "template": "{\n  \"embeds\": [{\n    \"title\": \"📢 Notification\",\n    \"description\": \"{{body.message}}\",\n    \"color\": 3447003,\n    \"fields\": [\n      {\"name\": \"Source\", \"value\": \"{{body.source}}\", \"inline\": true},\n      {\"name\": \"Time\", \"value\": \"{{timestamp}}\", \"inline\": true}\n    ]\n  }]\n}"
-      }
-    },
-    {
       "type": "action_http",
-      "position": { "x": 850, "y": 250 },
+      "position": { "x": 350, "y": 200 },
       "data": {
         "method": "POST",
-        "url": "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN",
-        "headers": {
-          "Content-Type": "application/json"
-        },
-        "body": "{{output}}"
+        "url": "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL",
+        "body": "{\"content\": \"{{body.message}}\"}"
       }
     },
     {
-      "type": "action_file",
-      "position": { "x": 1100, "y": 250 },
+      "type": "action_log",
+      "position": { "x": 600, "y": 200 },
       "data": {
-        "operation": "append",
-        "path": "C:\\Logs\\webhook-notifications.log",
-        "content": "[{{timestamp}}] Sent to Discord: {{body.message}}\n"
+        "message": "Sent to Discord: {{body.message}}"
       }
     }
   ],
@@ -67,32 +39,8 @@
     },
     {
       "sourceIndex": 1,
-      "sourcePort": "true",
+      "sourcePort": "out",
       "targetIndex": 2,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 1,
-      "sourcePort": "false",
-      "targetIndex": 3,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 2,
-      "sourcePort": "out",
-      "targetIndex": 4,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 3,
-      "sourcePort": "out",
-      "targetIndex": 4,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 4,
-      "sourcePort": "out",
-      "targetIndex": 5,
       "targetPort": "in"
     }
   ]

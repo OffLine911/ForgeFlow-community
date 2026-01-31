@@ -2,7 +2,7 @@
   "id": "api-health-monitor",
   "name": "API Health Monitor",
   "description": "Monitor multiple API endpoints and get alerts when they're down",
-  "icon": "🏥",
+  "icon": "activity",
   "category": "DevOps",
   "nodes": [
     {
@@ -14,53 +14,25 @@
     },
     {
       "type": "action_http",
-      "position": { "x": 350, "y": 100 },
-      "data": {
-        "method": "GET",
-        "url": "https://api.example.com/health",
-        "timeout": 5000
-      }
-    },
-    {
-      "type": "action_http",
       "position": { "x": 350, "y": 200 },
       "data": {
         "method": "GET",
-        "url": "https://api2.example.com/status",
-        "timeout": 5000
-      }
-    },
-    {
-      "type": "action_http",
-      "position": { "x": 350, "y": 300 },
-      "data": {
-        "method": "GET",
-        "url": "https://api3.example.com/ping",
-        "timeout": 5000
-      }
-    },
-    {
-      "type": "action_condition",
-      "position": { "x": 600, "y": 200 },
-      "data": {
-        "condition": "{{output.status}} !== 200"
+        "url": "https://api.github.com/status"
       }
     },
     {
       "type": "action_notification",
-      "position": { "x": 850, "y": 200 },
+      "position": { "x": 600, "y": 200 },
       "data": {
-        "title": "⚠️ API Down Alert",
-        "message": "API endpoint is not responding! Status: {{output.status}}"
+        "title": "API Health Check",
+        "message": "Status: {{output.status}}"
       }
     },
     {
-      "type": "action_file",
-      "position": { "x": 850, "y": 300 },
+      "type": "action_log",
+      "position": { "x": 850, "y": 200 },
       "data": {
-        "operation": "append",
-        "path": "C:\\Logs\\api-health.log",
-        "content": "[{{timestamp}}] API Health Check Failed - Status: {{output.status}}\n"
+        "message": "Health check completed at {{timestamp}}"
       }
     }
   ],
@@ -72,45 +44,15 @@
       "targetPort": "in"
     },
     {
-      "sourceIndex": 0,
+      "sourceIndex": 1,
       "sourcePort": "out",
       "targetIndex": 2,
       "targetPort": "in"
     },
     {
-      "sourceIndex": 0,
-      "sourcePort": "out",
-      "targetIndex": 3,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 1,
-      "sourcePort": "out",
-      "targetIndex": 4,
-      "targetPort": "in"
-    },
-    {
       "sourceIndex": 2,
       "sourcePort": "out",
-      "targetIndex": 4,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 3,
-      "sourcePort": "out",
-      "targetIndex": 4,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 4,
-      "sourcePort": "true",
-      "targetIndex": 5,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 4,
-      "sourcePort": "true",
-      "targetIndex": 6,
+      "targetIndex": 3,
       "targetPort": "in"
     }
   ]

@@ -2,95 +2,31 @@
   "id": "smart-file-organizer",
   "name": "Smart File Organizer",
   "description": "Automatically organize downloads by file type into categorized folders",
-  "icon": "📁",
+  "icon": "folder",
   "category": "Automation",
   "nodes": [
     {
-      "type": "trigger_file_watcher",
-      "position": { "x": 100, "y": 250 },
+      "type": "trigger_file_watch",
+      "position": { "x": 100, "y": 200 },
       "data": {
-        "path": "C:\\Users\\Downloads",
-        "events": ["created"]
+        "path": "C:\\Users\\Downloads"
       }
     },
     {
-      "type": "action_file",
-      "position": { "x": 350, "y": 250 },
-      "data": {
-        "operation": "info",
-        "path": "{{filePath}}"
-      }
-    },
-    {
-      "type": "action_condition",
-      "position": { "x": 600, "y": 100 },
-      "data": {
-        "condition": "{{output.extension}} in ['.jpg', '.png', '.gif', '.svg']"
-      }
-    },
-    {
-      "type": "action_condition",
-      "position": { "x": 600, "y": 200 },
-      "data": {
-        "condition": "{{output.extension}} in ['.pdf', '.doc', '.docx', '.txt']"
-      }
-    },
-    {
-      "type": "action_condition",
-      "position": { "x": 600, "y": 300 },
-      "data": {
-        "condition": "{{output.extension}} in ['.mp4', '.avi', '.mkv', '.mov']"
-      }
-    },
-    {
-      "type": "action_condition",
-      "position": { "x": 600, "y": 400 },
-      "data": {
-        "condition": "{{output.extension}} in ['.zip', '.rar', '.7z', '.tar']"
-      }
-    },
-    {
-      "type": "action_file",
-      "position": { "x": 850, "y": 100 },
+      "type": "action_file_manage",
+      "position": { "x": 350, "y": 200 },
       "data": {
         "operation": "move",
         "source": "{{filePath}}",
-        "destination": "C:\\Users\\Downloads\\Images\\{{fileName}}"
-      }
-    },
-    {
-      "type": "action_file",
-      "position": { "x": 850, "y": 200 },
-      "data": {
-        "operation": "move",
-        "source": "{{filePath}}",
-        "destination": "C:\\Users\\Downloads\\Documents\\{{fileName}}"
-      }
-    },
-    {
-      "type": "action_file",
-      "position": { "x": 850, "y": 300 },
-      "data": {
-        "operation": "move",
-        "source": "{{filePath}}",
-        "destination": "C:\\Users\\Downloads\\Videos\\{{fileName}}"
-      }
-    },
-    {
-      "type": "action_file",
-      "position": { "x": 850, "y": 400 },
-      "data": {
-        "operation": "move",
-        "source": "{{filePath}}",
-        "destination": "C:\\Users\\Downloads\\Archives\\{{fileName}}"
+        "destination": "C:\\Users\\Downloads\\Organized\\{{fileName}}"
       }
     },
     {
       "type": "action_notification",
-      "position": { "x": 1100, "y": 250 },
+      "position": { "x": 600, "y": 200 },
       "data": {
-        "title": "File Organized 📁",
-        "message": "{{fileName}} moved to appropriate folder"
+        "title": "File Organized",
+        "message": "{{fileName}} moved to organized folder"
       }
     }
   ],
@@ -105,72 +41,6 @@
       "sourceIndex": 1,
       "sourcePort": "out",
       "targetIndex": 2,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 1,
-      "sourcePort": "out",
-      "targetIndex": 3,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 1,
-      "sourcePort": "out",
-      "targetIndex": 4,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 1,
-      "sourcePort": "out",
-      "targetIndex": 5,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 2,
-      "sourcePort": "true",
-      "targetIndex": 6,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 3,
-      "sourcePort": "true",
-      "targetIndex": 7,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 4,
-      "sourcePort": "true",
-      "targetIndex": 8,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 5,
-      "sourcePort": "true",
-      "targetIndex": 9,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 6,
-      "sourcePort": "out",
-      "targetIndex": 10,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 7,
-      "sourcePort": "out",
-      "targetIndex": 10,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 8,
-      "sourcePort": "out",
-      "targetIndex": 10,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 9,
-      "sourcePort": "out",
-      "targetIndex": 10,
       "targetPort": "in"
     }
   ]

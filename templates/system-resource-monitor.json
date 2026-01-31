@@ -2,22 +2,36 @@
   "id": "system-resource-monitor",
   "name": "System Resource Monitor",
   "description": "Monitor CPU, memory, and disk usage with alerts for high resource consumption",
-  "icon": "💻",
+  "icon": "cpu",
   "category": "DevOps",
   "nodes": [
     {
       "type": "trigger_schedule",
-      "position": { "x": 100, "y": 250 },
+      "position": { "x": 100, "y": 200 },
       "data": {
         "cron": "*/10 * * * *"
       }
     },
     {
-      "type": "action_shell",
-      "position": { "x": 350, "y": 250 },
+      "type": "action_script",
+      "position": { "x": 350, "y": 200 },
       "data": {
-        "command": "wmic cpu get loadpercentage",
-        "shell": "cmd"
+        "command": "wmic cpu get loadpercentage"
+      }
+    },
+    {
+      "type": "action_notification",
+      "position": { "x": 600, "y": 200 },
+      "data": {
+        "title": "System Resources",
+        "message": "CPU Usage: {{output}}"
+      }
+    },
+    {
+      "type": "action_log",
+      "position": { "x": 850, "y": 200 },
+      "data": {
+        "message": "Resource check at {{timestamp}}: {{output}}"
       }
     }
   ],
@@ -26,6 +40,18 @@
       "sourceIndex": 0,
       "sourcePort": "out",
       "targetIndex": 1,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 1,
+      "sourcePort": "out",
+      "targetIndex": 2,
+      "targetPort": "in"
+    },
+    {
+      "sourceIndex": 2,
+      "sourcePort": "out",
+      "targetIndex": 3,
       "targetPort": "in"
     }
   ]

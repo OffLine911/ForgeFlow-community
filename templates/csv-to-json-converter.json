@@ -2,16 +2,15 @@
   "id": "csv-to-json-converter",
   "name": "CSV to JSON Converter",
   "description": "Convert CSV files to JSON format with data validation and formatting",
-  "icon": "📊",
+  "icon": "file-text",
   "category": "Data",
   "nodes": [
     {
-      "type": "trigger_file_watcher",
+      "type": "trigger_file_watch",
       "position": { "x": 100, "y": 200 },
       "data": {
         "path": "C:\\Data\\Input",
-        "events": ["created"],
-        "filter": "*.csv"
+        "pattern": "*.csv"
       }
     },
     {
@@ -23,48 +22,34 @@
       }
     },
     {
-      "type": "action_data",
+      "type": "action_csv_parse",
       "position": { "x": 600, "y": 200 },
       "data": {
-        "operation": "parse_csv",
-        "input": "{{output}}",
-        "delimiter": ",",
-        "headers": true
+        "input": "{{output}}"
       }
     },
     {
-      "type": "action_data",
+      "type": "utility_json_stringify",
       "position": { "x": 850, "y": 200 },
       "data": {
-        "operation": "transform",
-        "input": "{{output}}",
-        "script": "data.map(row => ({ ...row, processed: true, timestamp: new Date().toISOString() }))"
-      }
-    },
-    {
-      "type": "action_data",
-      "position": { "x": 1100, "y": 200 },
-      "data": {
-        "operation": "to_json",
-        "input": "{{output}}",
-        "pretty": true
+        "input": "{{output}}"
       }
     },
     {
       "type": "action_file",
-      "position": { "x": 1350, "y": 200 },
+      "position": { "x": 1100, "y": 200 },
       "data": {
         "operation": "write",
-        "path": "C:\\Data\\Output\\{{fileNameWithoutExt}}.json",
+        "path": "C:\\Data\\Output\\output.json",
         "content": "{{output}}"
       }
     },
     {
       "type": "action_notification",
-      "position": { "x": 1600, "y": 200 },
+      "position": { "x": 1350, "y": 200 },
       "data": {
-        "title": "✅ Conversion Complete",
-        "message": "{{fileName}} converted to JSON successfully"
+        "title": "Conversion Complete",
+        "message": "CSV converted to JSON successfully"
       }
     }
   ],
@@ -97,12 +82,6 @@
       "sourceIndex": 4,
       "sourcePort": "out",
       "targetIndex": 5,
-      "targetPort": "in"
-    },
-    {
-      "sourceIndex": 5,
-      "sourcePort": "out",
-      "targetIndex": 6,
       "targetPort": "in"
     }
   ]
