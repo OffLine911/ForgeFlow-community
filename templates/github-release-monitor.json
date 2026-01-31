@@ -22,17 +22,17 @@
     },
     {
       "type": "action_notification",
-      "position": { "x": 600, "y": 150 },
+      "position": { "x": 600, "y": 200 },
       "data": {
         "title": "New GitHub Release",
-        "message": "{{output.name}} ({{output.tag_name}})"
+        "message": "{{output.name}} ({{output.tag_name}})\n\nPublished: {{output.published_at}}"
       }
     },
     {
       "type": "action_log",
-      "position": { "x": 600, "y": 250 },
+      "position": { "x": 850, "y": 200 },
       "data": {
-        "message": "Release: {{output.tag_name}} - {{output.html_url}}"
+        "message": "GitHub release notification sent successfully"
       }
     }
   ],
@@ -50,7 +50,7 @@
       "targetPort": "in"
     },
     {
-      "sourceIndex": 1,
+      "sourceIndex": 2,
       "sourcePort": "out",
       "targetIndex": 3,
       "targetPort": "in"
