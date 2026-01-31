@@ -27,13 +27,31 @@ Templates are automatically fetched from this repository and displayed in ForgeF
 
 ## 📚 Documentation
 
-For detailed information about ForgeFlow's node types, connections, and variables, visit the [ForgeFlow Wiki](wiki/README.md):
+Visit the [Wiki](wiki/README.md) for detailed guides.
 
-- [Getting Started](wiki/templates/getting-started.md)
-- [Node Types](wiki/templates/node-types.md)
-- [Connections](wiki/templates/connections.md)
-- [Variables](wiki/templates/variables.md)
-- [Template Structure](wiki/templates/structure.md)
+### Templates
+| Guide | Description |
+|-------|-------------|
+| [Getting Started](wiki/templates/getting-started.md) | How to use and create templates |
+| [Template Structure](wiki/templates/structure.md) | JSON format reference |
+| [Node Types](wiki/templates/node-types.md) | Available node types |
+| [Connections](wiki/templates/connections.md) | Linking nodes together |
+| [Variables](wiki/templates/variables.md) | Dynamic values |
+
+### Custom Nodes
+| Guide | Description |
+|-------|-------------|
+| [Overview](wiki/custom-nodes/overview.md) | Custom Node Builder intro |
+| [Shell Commands](wiki/custom-nodes/shell-commands.md) | Run terminal commands |
+| [HTTP Requests](wiki/custom-nodes/http-requests.md) | Make API calls |
+| [JavaScript](wiki/custom-nodes/javascript.md) | Custom code execution |
+| [Input Fields](wiki/custom-nodes/input-fields.md) | Configurable inputs |
+
+### Examples
+| Guide | Description |
+|-------|-------------|
+| [Template Examples](wiki/examples/templates.md) | Copy-paste templates |
+| [Custom Node Examples](wiki/examples/custom-nodes.md) | Ready-to-use node configs |
 
 ## 🤝 Contributing
 
